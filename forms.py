@@ -36,3 +36,29 @@ class OrgLogin(Form):
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Log In')
+
+class AddSch(Form):
+    name = StringField('Name', validators = [ DataRequired() , Length(min = 2, max = 25) ])
+    description = StringField('Description', validators = [ DataRequired() , Length(min = 2, max = 256) ])
+    amount= FloatField('Amount',validators=[DataRequired()],default=0.0)
+    cls_x_min_per = FloatField('Class X min %',validators=[DataRequired()],default=0.0)
+    cls_xii_min_per = FloatField('Class XII min %',validators=[DataRequired()],default=0.0)
+    cls_ug_min_per = FloatField('UG min %',validators=[DataRequired()],default=0.0)
+    submit = SubmitField('ADD')
+
+    def validate_schname(self,name): #Not working
+        scholarship = Scholarship.query.filter_by(name=name.data).first()
+
+        if scholarship:
+            raise ValidationError('Scholarship name already exist!!')
+
+class UpdateSch(Form):
+    name = StringField('Name', validators = [ DataRequired() , Length(min = 2, max = 25) ])
+    description = StringField('Description', validators = [ DataRequired() , Length(min = 2, max = 256) ])
+    amount= FloatField('Amount',validators=[DataRequired()],default=0.0)
+    cls_x_min_per = FloatField('Class X min %',validators=[DataRequired()],default=0.0)
+    cls_xii_min_per = FloatField('Class XII min %',validators=[DataRequired()],default=0.0)
+    cls_ug_min_per = FloatField('UG min %',validators=[DataRequired()],default=0.0)
+    submit = SubmitField('Update Scholarship')
+
+        # Have to validate

@@ -48,7 +48,7 @@ class Scholarship(db.Model):
     organization_id = db.Column(db.Integer, db.ForeignKey('organization.id'), nullable=False)
 
     def __repr__(self):
-        return f"Scholarship('{self.name}', '{self.organization_id}')"
+        return f"Scholarship('{self.name}', '{self.organization_id}','{self.description}','{self.cls_x_min_per}','{self.cls_xii_min_per}','{self.cls_ug_min_per}')"
 
 '''
 
