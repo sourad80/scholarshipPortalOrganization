@@ -35,7 +35,7 @@
         {% endif %}
         {% if current_user.is_authenticated %}
           <li class="nav-item {% if title == "Welcome " + current_user.username %} active {% endif %}">
-            <a class="nav-link" href="">Dashboard</a>
+            <a class="nav-link" href="{{url_for('dashboard')}}">Dashboard</a>
           </li>
         {% endif %}
           <li class="nav-item {% if title == "About" %} active {% endif %}">

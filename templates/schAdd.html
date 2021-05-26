@@ -1,122 +1,108 @@
 {% extends "layout.html" %}
 
 {%block content%}
-            <div class="reg_form">
-                <h1 style="text-align: center; opacity: 100%;"><b>Add Scholarship</b></h1>
-                <form method="POST">
-                    {{ form.hidden_tag() }}
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            {{ form.name.label(class="form-control-label ml-1 mr-1") }}*
-    
-                            {% if form.name.errors %}
-                                {{ form.name(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.name.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.name(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="row">
+<div class="reg_form">
+    <h1 style="text-align: center; opacity: 100%;"><strong>Add Scholarship</strong></h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="row">
+            <div class="form-group col-md-6">
+                {{ form.name.label(class="form-control-label ml-1 mr-1") }}*
 
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            {{ form.amount.label(class="form-control-label ml-1 mr-1") }}*
-    
-                            {% if form.amount.errors %}
-                                {{ form.amount(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.amount.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.amount(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            {{ form.cls_x_min_per.label(class="form-control-label ml-1 mr-1") }}*
-    
-                            {% if form.cls_x_min_per.errors %}
-                                {{ form.cls_x_min_per(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.cls_x_min_per.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.cls_x_min_per(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            {{ form.cls_xii_min_per.label(class="form-control-label ml-1 mr-1") }}*
-    
-                            {% if form.cls_xii_min_per.errors %}
-                                {{ form.cls_xii_min_per(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.cls_xii_min_per.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.cls_xii_min_per(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            {{ form.cls_ug_min_per.label(class="form-control-label ml-1 mr-1") }}*
-    
-                            {% if form.cls_ug_min_per.errors %}
-                                {{ form.cls_ug_min_per(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.cls_ug_min_per.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.cls_ug_min_per(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            {{ form.description.label(class="form-control-label ml-1 mr-1") }}*
-    
-                            {% if form.description.errors %}
-                                {{ form.description(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.description.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.description(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="row">
-
-                        <div class="col-md-6 form-group">
-                        <div class="form-check-label pb-2 pt-2" for="exampleCheck1">* : required fields</div>
-                        {{ form.submit(class="btn btn-primary") }}
-                    </div>
-                    </div>
-
-             </form>
+                {% if form.name.errors %}
+                {{ form.name(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.name.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.name(class="form-control form-control-lg ml-1 mr-1") }}
+                {% endif %}
             </div>
+            <div class="form-group col-md-6">
+                {{ form.amount.label(class="form-control-label ml-1 mr-1") }}*
+
+                {% if form.amount.errors %}
+                {{ form.amount(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.amount.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.amount(class="form-control form-control-lg ml-1 mr-1") }}
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                {{ form.cls_x_min_per.label(class="form-control-label ml-1 mr-1") }}*
+
+                {% if form.cls_x_min_per.errors %}
+                {{ form.cls_x_min_per(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.cls_x_min_per.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.cls_x_min_per(class="form-control form-control-lg ml-1 mr-1") }}
+                {% endif %}
+            </div>
+            <div class="col-md-6 form-group">
+                {{ form.cls_xii_min_per.label(class="form-control-label ml-1 mr-1") }}
+
+                {% if form.cls_xii_min_per.errors %}
+                {{ form.cls_xii_min_per(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.cls_xii_min_per.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.cls_xii_min_per(class="form-control form-control-lg ml-1 mr-1") }}
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                {{ form.cls_ug_min_per.label(class="form-control-label ml-1 mr-1") }}
+
+                {% if form.cls_ug_min_per.errors %}
+                {{ form.cls_ug_min_per(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.cls_ug_min_per.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.cls_ug_min_per(class="form-control form-control-lg ml-1 mr-1") }}
+                {% endif %}
+            </div>
+            <div class="col-md-6 form-group">
+                {{ form.description.label(class="form-control-label ml-1 mr-1") }}*
+
+                {% if form.description.errors %}
+                {{ form.description(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.description.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.description(class="form-control form-control-lg ml-1 mr-1") }}
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-6 form-group">
+                <div class="form-check-label pb-2 pt-2" for="exampleCheck1">* : required fields</div>
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </div>
+
+    </form>
+</div>
 {% endblock %}
