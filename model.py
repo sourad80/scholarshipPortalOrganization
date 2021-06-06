@@ -58,3 +58,9 @@ print(scholarship.organization.username)
 scholarship = Scholarship(...., organization_id=current_user.id)
 
 '''
+class scholarship_application(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    sch_id = db.Column(db.Integer, db.ForeignKey('scholarship.id'), nullable=False)
+    stu_id = db.Column(db.Integer, db.ForeignKey('student.id'),nullable=False)
+    org_id = db.Column(db.Integer, db.ForeignKey('organization.id'), nullable=False)
+    status = db.Column(db.Integer,nullable=False)
