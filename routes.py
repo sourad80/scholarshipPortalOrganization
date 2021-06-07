@@ -2,7 +2,7 @@ from flask_login.utils import logout_user
 from werkzeug.exceptions import abort
 from app import app,db,bcrypt
 from flask import render_template,redirect,flash,url_for,request
-from forms import OrgRegistration,OrgLogin,AddSch,UpdateSch,ApplicantDetails
+from forms import OrgRegistration,OrgLogin,AddSch,UpdateSch
 from model import Organization, Student,Scholarship,scholarship_application
 from flask_login import login_user,current_user,login_required
 
@@ -128,39 +128,20 @@ def view_application_id(id):
 @app.route('/view_applicant_details/<id>',methods=['POST','GET'])
 @login_required
 def view_applicant_details_id(id):
-    form = ApplicantDetails()
     student = Student.query.filter_by(id=id).first()
-    if form.validate_on_submit():
-        student.username = form.name.data
-        student.email = form.email.data
-        student.phone = form.phone.data
-        student.address = form.address.data
-        student.income = form.earning.data
-        student.clx = form.xinst.data
-        student.clxmarks = form.xmarks.data
-        student.clxii = form.xiiinst.data
-        student.clxiimarks = form.xiimarks.data
-        student.ug = form.uginst.data
-        student.ugmarks = form.ugmarks.data
-        student.pg = form.pginst.data
-        student.pgmarks = form.pgmarks.data
-        db.session.commit()
-        flash(f'Account Updated Successfully!!', 'success')
-        return "<H1>I've No fucking Idea what Ill do next!!!!!</H1>"
+    return render_template("applicantDetails.html", title="Details",student=student)
 
-    elif request.method == 'GET':
-        form.name.data = student.username
-        form.email.data = student.email 
-        form.phone.data = student.phone
-        form.address.data = student.address
-        form.earning.data = student.income
-        form.xinst.data = student.clx
-        form.xmarks.data = student.clxmarks
-        form.xiiinst.data = student.clxii 
-        form.xiimarks.data = student.clxiimarks
-        form.uginst.data = student.ug
-        form.ugmarks.data = student.ugmarks
-        form.pginst.data = student.pg
-        form.pgmarks.data = student.pgmarks
-    return render_template("applicantDetails.html", title="Details",form = form)
+@app.route("/grantApplicant/", methods=['POST','GET'])
+@login_required
+def grantApplicant():
+    # TO DO change status
+    flash(f'Scholarship Granted Successfully!!', 'success')
+    return redirect(url_for('view_application'));
+
+@app.route("/revokeApplicant/", methods=['POST','GET'])
+@login_required
+def revokeApplicant():
+    # TO DO change status
+    flash(f'Scholarship Revoked Successfully!!', 'success')
+    return redirect(url_for('view_application'));
 

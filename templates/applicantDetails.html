@@ -1,210 +1,124 @@
 {% extends "layout.html" %}
 
 {%block content%}
-            <div class="reg_form">
-                <h1 style="text-align: center; opacity: 100%;"><b>Details</b></h1>
-                <form method="POST">
-                    {{ form.hidden_tag() }}
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            {{ form.name.label(class="form-control-label ml-1 mr-1") }}
-    
-                            {% if form.name.errors %}
-                                {{ form.name(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.name.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.name(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-                        <div class="col-md-6 form-group">
-                            {{ form.email.label(class="form-control-label ml-1 mr-1") }}
-                            {% if form.email.errors %}
-                                {{ form.email(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.email.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.email(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            {{ form.phone.label(class="form-control-label ml-1 mr-1") }}
-    
-                            {% if form.phone.errors %}
-                                {{ form.phone(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.phone.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.phone(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-                        <div class="col-md-6 form-group">
-                            {{ form.address.label(class="form-control-label ml-1 mr-1") }}
-    
-                            {% if form.address.errors %}
-                                {{ form.address(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.address.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.address(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            {{ form.earning.label(class="form-control-label ml-1 mr-1") }}
-    
-                            {% if form.earning.errors %}
-                                {{ form.earning(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.earning.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.earning(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-                        <div class="col-md-6 form-group">
-                            {{ form.xinst.label(class="form-control-label ml-1 mr-1") }}
-    
-                            {% if form.xinst.errors %}
-                                {{ form.xinst(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.xinst.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.xinst(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            {{ form.xmarks.label(class="form-control-label ml-1 mr-1") }}
-    
-                            {% if form.xmarks.errors %}
-                                {{ form.xmarks(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.xmarks.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.xmarks(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-                        <div class="col-md-6 form-group">
-                            {{ form.xiiinst.label(class="form-control-label ml-1 mr-1") }}
-    
-                            {% if form.xiiinst.errors %}
-                                {{ form.xiiinst(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.xiiinst.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.xiiinst(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            {{ form.xiimarks.label(class="form-control-label ml-1 mr-1") }}
-    
-                            {% if form.xiimarks.errors %}
-                                {{ form.xiimarks(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.xiimarks.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.xiimarks(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-                        <div class="col-md-6 form-group">
-                            {{ form.uginst.label(class="form-control-label ml-1 mr-1") }}
-    
-                            {% if form.uginst.errors %}
-                                {{ form.uginst(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.uginst.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.uginst(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            {{ form.ugmarks.label(class="form-control-label ml-1 mr-1") }}
-    
-                            {% if form.ugmarks.errors %}
-                                {{ form.ugmarks(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.ugmarks.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.ugmarks(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-                        <div class="col-md-6 form-group">
-                            {{ form.pginst.label(class="form-control-label ml-1 mr-1") }}
-    
-                            {% if form.pginst.errors %}
-                                {{ form.pginst(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.pginst.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.pginst(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            {{ form.pgmarks.label(class="form-control-label ml-1 mr-1") }}
-    
-                            {% if form.pgmarks.errors %}
-                                {{ form.pgmarks(class="form-control form-control-lg ml-1 mr-1 is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.pgmarks.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.pgmarks(class="form-control form-control-lg ml-1 mr-1") }}
-                            {% endif %}
-                        </div>
-                        <div class="col-md-6 form-group">
-                        <div class="form-check-label pb-2 pt-2" for="exampleCheck1">* : required fields</div>
-                        {{ form.submit(class="btn btn-primary") }}
-                    </div>
-                    </div>
 
-             </form>
+<div class="container bg-light" style="border-radius: 10px; margin-top: 10vh; padding: 20px;">
+    <h1 style="text-align: center; opacity: 100%;"><strong>Details</strong></h1>
+    <table class="table table-striped table-light table-bordered table-center">
+        <tbody>
+            <tr>
+                <th scope="row">Name</th>
+                <td>{{ student.username}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Email</th>
+                <td>{{ student.email}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Phone</th>
+                <td>{{ student.phone}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Address</th>
+                <td>{{ student.address}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Class X Institute</th>
+                <td>{{ student.clx}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Class X Marks</th>
+                <td>{{ student.clxmarks}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Class XII Institute</th>
+                <td>{{ student.clxii}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Class XII Marks</th>
+                <td>{{ student.clxiimarks}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Yearly Family Income</th>
+                <td>{{ student.income}}</td>
+            </tr>
+            <tr>
+                <th scope="row">UG Institute</th>
+                <td>{{ student.ug}}</td>
+            </tr>
+            <tr>
+                <th scope="row">UG Marks</th>
+                <td>{{ student.ugmarks}}</td>
+            </tr>
+            <tr>
+                <th scope="row">PG Institute</th>
+                <td>{{ student.pg}}</td>
+            </tr>
+            <tr>
+                <th scope="row">PG Marks</th>
+                <td>{{ student.pgmarks}}</td>
+            </tr>
+        </tbody>
+    </table><br>
+    <div>
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#GrantModal">
+                Grant
+            </button>
+        </div><br>
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#RevokeModal">
+                Revoke
+            </button>
+        </div>
+    </div>
+    <div class="modal fade" id="GrantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <b>Are you sure ?</b>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <form action="/grantApplicant/" method="post">
+                        <button name="grantededBtn" class="btn btn-success" type="submit">Grant</button>
+                    </form>
+                </div>
             </div>
+        </div>
+    </div>
+    <div class="modal fade" id="RevokeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <b>Are you sure ?</b>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <form action="/revokeApplicant/" method="post">
+                        <button name="revokedBtn" class="btn btn-danger" type="submit">Revoke</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
 {% endblock %}

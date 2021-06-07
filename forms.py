@@ -62,20 +62,5 @@ class UpdateSch(Form):
     cls_ug_min_per = FloatField('UG min %',default=0.0)
     submit = SubmitField('Update Scholarship')
 
-class ApplicantDetails(Form):
-    name = StringField('Name', validators = [ DataRequired() , Length(min = 2, max = 25) ])
-    email = StringField('Email',validators= [ DataRequired(), Email()])
-    phone = StringField('Phone Number',validators= [ DataRequired(), Length(min = 10, max = 13)])
-    address = StringField('Address',validators= [ DataRequired()])
-    earning = FloatField('Anual Family Income',validators=[DataRequired()])
-    xinst = StringField('Class X Institute',validators= [ DataRequired()])
-    xmarks = FloatField('Class X Marks',validators=[DataRequired()])
-    xiiinst = StringField('Class XII Institute')
-    xiimarks = FloatField('Class XII Marks',default=0.0)
-    uginst = StringField('Graduation Institute')
-    ugmarks = FloatField('Graduation Marks',default=0.0)
-    pginst = StringField('Post Graduation Institute')
-    pgmarks = FloatField('Post Graduation Marks',default=0.0)
-    submit = SubmitField('Update Account')
     
 

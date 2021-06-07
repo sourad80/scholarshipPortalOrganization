@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <link rel="icon" type="image/png" href="../static/favicon.ico">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../static/style.css">
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link rel="icon" type="image/png" href="../static/favicon.ico">
 
-    <title>{{ title }}</title>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../static/style.css">
+
+  <title>{{ title }}</title>
 </head>
+
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
       <a class="navbar-brand" href="#">
-            <img src="../static/logo.png" alt="">
-          </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+        <img src="../static/logo.png" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-        {% if not current_user.is_authenticated %}
+          {% if not current_user.is_authenticated %}
           <li class="nav-item {% if title == "Home" %} active {% endif %}">
             <a class="nav-link" href="">Home</a>
           </li>
-        {% endif %}
-        {% if current_user.is_authenticated %}
+          {% endif %}
+          {% if current_user.is_authenticated %}
           <li class="nav-item {% if title == "Welcome " + current_user.username %} active {% endif %}">
             <a class="nav-link" href="{{url_for('dashboard')}}">Dashboard</a>
           </li>
-        {% endif %}
+          {% endif %}
           <li class="nav-item {% if title == "About" %} active {% endif %}">
             <a class="nav-link" href="">About</a>
           </li>
@@ -47,42 +51,44 @@
           {% if not current_user.is_authenticated %}
           <li class="nav-item {% if title == "Login" %} active {% endif %}">
             <a class="nav-link" href="{{url_for('login')}}">Login</a>
-          {% endif %}
-          {% if current_user.is_authenticated %}
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle pl-2" style="border-style: none;background: none;" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-user" aria-hidden="true"></i>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <h4>Hi {{current_user.username}}</h4>
-              <a href="" class="dropdown-item">Update Account</a>
-              <a href="" class="dropdown-item">Track Applications</a>
-              <a href="{{url_for('logout')}}" class="dropdown-item">Logout</a>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle pl-2" style="border-style: none;background: none;"
+                type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <h4>Hi {{current_user.username}}</h4>
+                <a href="" class="dropdown-item">Update Account</a>
+                <a href="" class="dropdown-item">Track Applications</a>
+                <a href="{{url_for('logout')}}" class="dropdown-item">Logout</a>
+              </div>
             </div>
-          </div>
-          {% endif %}
+            {% endif %}
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-      {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="alert alert-{{ category }}">
-            {{ message }}
-          </div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
-    {% block content %}
-    {% endblock %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  {% for category, message in messages %}
+  <div class="alert alert-{{ category }}">
+    {{ message }}
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  {% block content %}
+  {% endblock %}
 
 
-      <div class="footer">
-        <p style="margin-bottom: 0px;">GROUP - 3 || SCHOLARSHIP PORTAL</p>
-      </div>
+  <div class="footer">
+    <p style="margin-bottom: 0px;">GROUP - 3 || SCHOLARSHIP PORTAL</p>
+  </div>
 
 </body>
+
 </html>
