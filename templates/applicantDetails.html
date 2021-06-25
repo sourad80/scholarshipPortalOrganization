@@ -87,9 +87,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <form action="/grantApplicant/" method="post">
-                        <button name="grantededBtn" class="btn btn-success" type="submit">Grant</button>
-                    </form>
+                    <a href="{{url_for("grant_applicant", id = student.id)}}">
+                        <button name="revokedBtn" class="btn btn-success" type="submit">Grant</button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -109,10 +109,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <form action="/revokeApplicant/" method="post">
-                        <button name="revokedBtn" class="btn btn-danger" type="submit">Revoke</button>
-                    </form>
-
+                    <a href="{{url_for("revoke_applicant", id = student.id)}}">
+                        <button name="revokedBtn" class="btn btn-warning" type="submit">Revoke</button>
+                    </a>
                 </div>
             </div>
         </div>

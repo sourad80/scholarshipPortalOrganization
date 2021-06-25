@@ -5,17 +5,21 @@
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th scope="col">Applicant ID</th>
-                <th scope="col">Scholarship ID</th>
+                <th scope="col">Application Id</th>
+                <th scope="col">Applicant Name</th>
+                <th scope="col">Applicant Email</th>
+                <th scope="col">Scholarship Name</th>
             </tr>
         </thead>
         <tbody>
             {% for scholarship_application in scholarship_applications %}
             <tr>
-                <td>{{ scholarship_application.stu_id }}</td>
-                <td>{{ scholarship_application.sch_id }}</td>
+                <td>{{ scholarship_application.id }}</td>
+                <td>{{ scholarship_application.student.username }}</td>
+                <td>{{ scholarship_application.student.email }}</td>
+                <td>{{ scholarship_application.application.name }}</td>
                 <td class="d-flex justify-content-center">
-                    <a href="{{url_for('view_applicant_details_id',id=scholarship_application.stu_id)}}">
+                    <a href="{{url_for('view_applicant_details_id',id=scholarship_application.id)}}">
                         <button class="btn btn-primary">Applicant Details</button>
                     </a>
                 </td>
