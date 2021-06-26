@@ -17,9 +17,9 @@
                 <td>{{ scholarship_application.id }}</td>
                 <td>{{ scholarship_application.student.username }}</td>
                 <td>{{ scholarship_application.student.email }}</td>
-                <td>{{ scholarship_application.application.name }}</td>
+                <td>{{ scholarship_application.scholarship.name }}</td>
                 <td class="d-flex justify-content-center">
-                    <a href="{{url_for('view_applicant_details_id',id=scholarship_application.id)}}">
+                    <a href="{{url_for('view_applicant_details_id',id=scholarship_application.stu_id)}}">
                         <button class="btn btn-primary">Applicant Details</button>
                     </a>
                 </td>

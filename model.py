@@ -8,7 +8,7 @@ def load_student(user_id):
 
 class Student(db.Model,UserMixin):
     id = db.Column(db.Integer,primary_key=True)
-    username = db.Column(db.String(20), unique=True, nullable=False)
+    username = db.Column(db.String(200), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     phone = db.Column(db.String(13), unique=True, nullable=False)
     address = db.Column(db.String(120))
@@ -29,7 +29,7 @@ class Student(db.Model,UserMixin):
 
 class Organization(db.Model,UserMixin):
     id = db.Column(db.Integer,primary_key=True)
-    username = db.Column(db.String(20), unique=True, nullable=False)
+    username = db.Column(db.String(200), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     phone = db.Column(db.String(13), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
@@ -40,7 +40,7 @@ class Organization(db.Model,UserMixin):
 
 class Scholarship(db.Model):
     id = db.Column(db.Integer,primary_key=True)
-    name = db.Column(db.String(30), unique=True, nullable=False)
+    name = db.Column(db.String(200), unique=True, nullable=False)
     description = db.Column(db.String(256))
     amount= db.Column(db.Float)
     cls_x_min_per = db.Column(db.Float)

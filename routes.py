@@ -142,7 +142,6 @@ def view_application_id(id):
     scholarship_applications = []
     for i in scholarship_applications_main:
         if i.status == 1:
-            print(i)
             scholarship_applications.append(i)
     return render_template('viewApplicants.html', title="Applicants", scholarship_applications=scholarship_applications)
 
@@ -157,7 +156,7 @@ def view_applicant_details_id(id):
 @app.route("/grantApplicant/<id>", methods=['POST', 'GET'])
 @login_required
 def grant_applicant(id):
-    scholarship = scholarship_application.query.filter_by(id=id)[0]
+    scholarship = scholarship_application.query.filter_by(stu_id=id)[0]
     scholarship.status = 2
     db.session.commit()
     flash(f'Scholarship Granted Successfully!!', 'success')
@@ -167,8 +166,8 @@ def grant_applicant(id):
 @app.route("/revokeApplicant/<id>", methods=['POST', 'GET'])
 @login_required
 def revoke_applicant(id):
-    scholarship = scholarship_application.query.filter_by(id=id)[0]
+    scholarship = scholarship_application.query.filter_by(stu_id=id)[0]
     scholarship.status = 0
     db.session.commit()
-    flash(f'Scholarship Revoked Successfully!!', 'success')
+    flash(f'Scholarship Revoked Successfully!!', 'warning')
     return redirect(url_for('view_application'))
