@@ -3,8 +3,8 @@ from datetime import datetime
 from flask_login import UserMixin
 
 @login_manager.user_loader
-def load_student(user_id):
-    return Student.query.get(int(user_id))
+def load_organization(user_id):
+    return Organization.query.get(int(user_id))
 
 class Student(db.Model,UserMixin):
     id = db.Column(db.Integer,primary_key=True)

@@ -71,7 +71,7 @@ def add_sch():
         db.session.commit()
         flash(f'Created New Scholarship', 'success')
         return redirect(url_for('dashboard'))
-    return render_template('schAdd.html', title="Welcome"+current_user.username, form=form)
+    return render_template('schAdd.html', title="Welcome "+current_user.username, form=form)
 
 
 @app.route('/updateSch/<id>', methods=['POST', 'GET'])
@@ -114,7 +114,7 @@ def delete_sch_id(id):
     if scholarship.organization_id != current_user.id:
         abort(404)
     else:
-        db.session.delete(scholarship)
+        scholarship.life = 0
         db.session.commit()
     flash(f'Scholarship Deleted Successfully!!', 'success')
     return redirect(url_for('dashboard'))
@@ -139,24 +139,20 @@ def view_application():
 def view_application_id(id):
     scholarship_applications_main = scholarship_application.query.filter_by(
         sch_id=id)
-    scholarship_applications = []
-    for i in scholarship_applications_main:
-        if i.status == 1:
-            scholarship_applications.append(i)
-    return render_template('viewApplicants.html', title="Applicants", scholarship_applications=scholarship_applications)
+    return render_template('viewApplicants.html', title="Applicants", scholarship_applications=scholarship_applications_main)
 
 
 @app.route('/view_applicant_details/<id>', methods=['POST', 'GET'])
 @login_required
 def view_applicant_details_id(id):
-    student = Student.query.filter_by(id=id).first()
-    return render_template("applicantDetails.html", title="Details", student=student)
-
+    application = scholarship_application.query.filter_by(id = id).first()
+    student = application.student
+    return render_template("applicantDetails.html", title="Details", student=student, status = application.status, id=application.id)
 
 @app.route("/grantApplicant/<id>", methods=['POST', 'GET'])
 @login_required
 def grant_applicant(id):
-    scholarship = scholarship_application.query.filter_by(stu_id=id)[0]
+    scholarship = scholarship_application.query.filter_by(id=id).first()
     scholarship.status = 2
     db.session.commit()
     flash(f'Scholarship Granted Successfully!!', 'success')
@@ -166,7 +162,7 @@ def grant_applicant(id):
 @app.route("/revokeApplicant/<id>", methods=['POST', 'GET'])
 @login_required
 def revoke_applicant(id):
-    scholarship = scholarship_application.query.filter_by(stu_id=id)[0]
+    scholarship = scholarship_application.query.filter_by(id=id).first()
     scholarship.status = 0
     db.session.commit()
     flash(f'Scholarship Revoked Successfully!!', 'warning')

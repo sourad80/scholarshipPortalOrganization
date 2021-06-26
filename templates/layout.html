@@ -12,6 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="icon" type="image/png" href="../static/favicon.ico">
 
   <!-- Custom CSS -->
@@ -33,23 +34,20 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           {% if not current_user.is_authenticated %}
-          <li class="nav-item {% if title == "Home" %} active {% endif %}">
+          <li class="nav-item {% if title == " Home" %} active {% endif %}">
             <a class="nav-link" href="">Home</a>
           </li>
           {% endif %}
           {% if current_user.is_authenticated %}
-          <li class="nav-item {% if title == "Welcome " + current_user.username %} active {% endif %}">
+          <li class="nav-item {% if title == " Welcome " + current_user.username %} active {% endif %}">
             <a class="nav-link" href="{{url_for('dashboard')}}">Dashboard</a>
           </li>
           {% endif %}
-          <li class="nav-item {% if title == "About" %} active {% endif %}">
+          <li class="nav-item {% if title == " About" %} active {% endif %}">
             <a class="nav-link" href="">About</a>
           </li>
-          <li class="nav-item {% if title == "Services" %} active {% endif %}">
-            <a class="nav-link" href="#">Services</a>
-          </li>
           {% if not current_user.is_authenticated %}
-          <li class="nav-item {% if title == "Login" %} active {% endif %}">
+          <li class="nav-item {% if title == " Login" %} active {% endif %}">
             <a class="nav-link" href="{{url_for('login')}}">Login</a>
             {% endif %}
             {% if current_user.is_authenticated %}
@@ -58,11 +56,11 @@
                 type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-user" aria-hidden="true"></i>
               </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <h4>Hi {{current_user.username}}</h4>
-                <a href="" class="dropdown-item">Update Account</a>
-                <a href="" class="dropdown-item">Track Applications</a>
-                <a href="{{url_for('logout')}}" class="dropdown-item">Logout</a>
+              <div class="dropdown-menu p-2 justify-content-center" aria-labelledby="dropdownMenu2">
+                <p>Hi {{current_user.username}}</p>
+                <hr>
+                <a class="btn w-100 btn-outline-dark" href="{{url_for('logout')}}" class="dropdown-item"><i
+                    class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
               </div>
             </div>
             {% endif %}

@@ -12,17 +12,26 @@
             </tr>
         </thead>
         <tbody>
-            {% for scholarship_application in scholarship_applications %}
+            {% for scholarship_application in scholarship_applications[::-1] %}
             <tr>
                 <td>{{ scholarship_application.id }}</td>
                 <td>{{ scholarship_application.student.username }}</td>
                 <td>{{ scholarship_application.student.email }}</td>
                 <td>{{ scholarship_application.scholarship.name }}</td>
                 <td class="d-flex justify-content-center">
-                    <a href="{{url_for('view_applicant_details_id',id=scholarship_application.stu_id)}}">
+                    <a href="{{url_for('view_applicant_details_id',id=scholarship_application.id)}}">
                         <button class="btn btn-primary">Applicant Details</button>
                     </a>
                 </td>
+                {% if scholarship_application.status == 1 %}
+                    <td class="text-warning">⌛ Pending</td>
+                {% endif %}
+                {% if scholarship_application.status == 0 %}
+                    <td class="text-danger">❌ Rejected</td>
+                {% endif %}
+                {% if scholarship_application.status == 2 %}
+                    <td class="text-success">✔️ Selected</td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
