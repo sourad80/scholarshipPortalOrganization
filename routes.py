@@ -114,9 +114,15 @@ def delete_sch_id(id):
     if scholarship.organization_id != current_user.id:
         abort(404)
     else:
-        scholarship.life = 0
-        db.session.commit()
-    flash(f'Scholarship Deleted Successfully!!', 'success')
+        if scholarship.life == 1:
+            scholarship.life = 0
+            db.session.commit()
+            flash(f'Scholarship Closed Successfully!!', 'warning')
+        else:
+            scholarship.life = 1
+            db.session.commit()
+            flash(f'Scholarship Opened Successfully!!', 'success')
+
     return redirect(url_for('dashboard'))
 
 
