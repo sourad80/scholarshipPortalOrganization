@@ -132,6 +132,9 @@ def delete_sch():
     scholarships = Scholarship.query.filter_by(organization_id=current_user.id)
     return render_template('viewDeleteScholarship.html', title="Your Scholarships", scholarships=scholarships)
 
+@app.route('/about')
+def about():
+    return render_template('about.html',title="About")
 
 @app.route('/viewApplication', methods=['POST', 'GET'])
 @login_required

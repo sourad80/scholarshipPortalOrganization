@@ -60,20 +60,26 @@
             </tr>
         </tbody>
     </table><br>
-    {% if status == 1 %}
-        <div>
-            <div class="d-flex justify-content-center">
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#GrantModal">
-                    Grant
-                </button>
-            </div><br>
-            <div class="d-flex justify-content-center">
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#RevokeModal">
-                    Revoke
-                </button>
-            </div>
-        </div>
+    {% if status != 1 %}
+    <p class="text-warning fw-bold"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> You may change your
+        verdict</p>
     {% endif %}
+    {% if status == 1 or status == 0 %}
+    <div>
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#GrantModal">
+                Grant
+            </button>
+        </div><br>
+        {% endif %}
+        {% if status == 1 or status == 2 %}
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#RevokeModal">
+                Revoke
+            </button>
+        </div>
+        {% endif %}
+    </div>
     <div class="modal fade" id="GrantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -89,7 +95,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <a href="{{url_for("grant_applicant", id = id)}}">
+                    <a href="{{url_for("grant_applicant", id=id)}}">
                         <button name="revokedBtn" class="btn btn-success" type="submit">Grant</button>
                     </a>
                 </div>
@@ -111,7 +117,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <a href="{{url_for("revoke_applicant", id = id)}}">
+                    <a href="{{url_for("revoke_applicant", id=id)}}">
                         <button name="revokedBtn" class="btn btn-warning" type="submit">Revoke</button>
                     </a>
                 </div>
